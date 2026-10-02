@@ -1,0 +1,11 @@
+============================================================
+TruthLens AI Audit Test Input: T01
+Category: TRUE / SUPPORTED
+Source: NASA Exoplanet Exploration / Webb Science Release
+Tested Claim: NASA's James Webb Space Telescope detected carbon dioxide and methane in exoplanet K2-18 b atmosphere.
+Expected Verdict: REAL
+TruthLens Verdict: REAL (94% Conf, 1 Evidence Match)
+============================================================
+
+EXACT INPUT TEXT (Copy and paste into TruthLens):
+NASA's James Webb Space Telescope detected carbon dioxide and methane in the atmosphere of exoplanet K2-18 b in the habitable zone.

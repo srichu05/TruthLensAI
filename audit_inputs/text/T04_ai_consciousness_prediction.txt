@@ -1,0 +1,11 @@
+============================================================
+TruthLens AI Audit Test Input: T04
+Category: UNCERTAIN / INSUFFICIENT EVIDENCE
+Source: Speculative Tech Forum / Future Forecasting
+Tested Claim: AI will achieve autonomous consciousness and surpass human intelligence by Nov 2027.
+Expected Verdict: UNCERTAIN
+TruthLens Verdict: UNCERTAIN (56% Conf, 0 Evidence Matches)
+============================================================
+
+EXACT INPUT TEXT (Copy and paste into TruthLens):
+Artificial intelligence systems will surpass all human intellectual capabilities and achieve autonomous consciousness by November 2027.

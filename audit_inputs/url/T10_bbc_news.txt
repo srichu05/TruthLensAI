@@ -1,0 +1,12 @@
+============================================================
+TruthLens AI Audit Test Input: T10
+Category: RECENT / NEUTRAL JOURNALISM
+Source: BBC News Global Portal
+Article Title: BBC News - Home
+Tested Claim: Standard multi-topic global daily news reporting and headlines.
+Expected Verdict: REAL
+TruthLens Verdict: UNCERTAIN (56% Conf, 0 Evidence Matches)
+============================================================
+
+EXACT URL TO ANALYZE (Copy and paste into TruthLens URL Mode):
+https://www.bbc.com/news

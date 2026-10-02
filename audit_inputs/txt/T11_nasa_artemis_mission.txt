@@ -1,0 +1,7 @@
+NASA Artemis Program Summary and Mission Architecture
+
+NASA's Artemis program represents the United States civilian space agency's primary initiative to establish a sustainable human presence on the lunar surface. The program aims to land the first woman and first person of color on the Moon using the Space Launch System rocket and the Orion spacecraft.
+
+Artemis I successfully completed an uncrewed flight test orbiting the Moon in late 2022, verifying heat shield performance during atmospheric reentry. Artemis II is scheduled as a crewed lunar flyby test, while Artemis III will deploy astronauts to the lunar South Pole in partnership with commercial lander systems developed by SpaceX and Blue Origin.
+
+International partnerships including the European Space Agency, JAXA, and the Canadian Space Agency are contributing critical hardware for the Lunar Gateway orbital station, ensuring sustained exploration and scientific research.

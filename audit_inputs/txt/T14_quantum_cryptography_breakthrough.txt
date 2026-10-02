@@ -1,0 +1,5 @@
+Unconfirmed Technical Bulletin: Tabletop Quantum Decryption Claims
+
+Speculative reports from unverified technical forums assert that a private quantum computing startup has achieved operational decryption of 4096-bit RSA encryption keys using an experimental tabletop processor operating at ambient temperature.
+
+Current peer-reviewed cryptographic literature indicates that breaking 4096-bit RSA would require millions of physical qubits with fault-tolerant error correction, capabilities far beyond existing noisy intermediate-scale quantum devices. Independent cryptographers have noted that no verifiable mathematical proof, code repository, or reproducible benchmark has been submitted to peer-reviewed journals. Therefore, the authenticity of these decryption claims remains entirely uncorroborated.

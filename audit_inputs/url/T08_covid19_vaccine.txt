@@ -1,0 +1,12 @@
+============================================================
+TruthLens AI Audit Test Input: T08
+Category: TRUE / MEDICAL FACTUAL
+Source: Wikipedia (English)
+Article Title: COVID-19 vaccine - Wikipedia
+Tested Claim: COVID-19 vaccines were developed, tested in clinical trials, and deployed globally under regulatory authorizations.
+Expected Verdict: REAL
+TruthLens Verdict: REAL (79% Conf, 2 Evidence Matches)
+============================================================
+
+EXACT URL TO ANALYZE (Copy and paste into TruthLens URL Mode):
+https://en.wikipedia.org/wiki/COVID-19_vaccine

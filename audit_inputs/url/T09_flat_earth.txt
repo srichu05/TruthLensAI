@@ -1,0 +1,12 @@
+============================================================
+TruthLens AI Audit Test Input: T09
+Category: FALSE / PSEUDOSCIENCE
+Source: Wikipedia (English)
+Article Title: Flat Earth - Wikipedia
+Tested Claim: The Earth is a flat stationary disc surrounded by an Antarctic ice wall.
+Expected Verdict: FAKE
+TruthLens Verdict: UNCERTAIN (56% Conf, 0 Evidence Matches)
+============================================================
+
+EXACT URL TO ANALYZE (Copy and paste into TruthLens URL Mode):
+https://en.wikipedia.org/wiki/Flat_Earth

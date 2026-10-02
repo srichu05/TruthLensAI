@@ -1,0 +1,7 @@
+# TruthLens AI Audit - URL Test Cases (T06 - T10)
+
+T06: https://en.wikipedia.org/wiki/Moon_landing (TRUE / SUPPORTED (Historical Event))
+T07: https://en.wikipedia.org/wiki/Moon_landing_conspiracy_theories (FALSE / CONSPIRACY REFUTATION)
+T08: https://en.wikipedia.org/wiki/COVID-19_vaccine (TRUE / MEDICAL FACTUAL)
+T09: https://en.wikipedia.org/wiki/Flat_Earth (FALSE / PSEUDOSCIENCE)
+T10: https://www.bbc.com/news (RECENT / NEUTRAL JOURNALISM)

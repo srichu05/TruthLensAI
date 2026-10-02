@@ -1,0 +1,11 @@
+============================================================
+TruthLens AI Audit Test Input: T05
+Category: NEUTRAL / FACTUAL
+Source: Financial News / Central Bank Coverage
+Tested Claim: The Federal Reserve raised the benchmark interest rate by 25 basis points.
+Expected Verdict: REAL
+TruthLens Verdict: UNCERTAIN (56% Conf, 0 Evidence Matches)
+============================================================
+
+EXACT INPUT TEXT (Copy and paste into TruthLens):
+The Federal Reserve raised the benchmark federal funds rate by 25 basis points following the FOMC meeting on monetary policy.

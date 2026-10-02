@@ -1,0 +1,12 @@
+============================================================
+TruthLens AI Audit Test Input: T07
+Category: FALSE / CONSPIRACY REFUTATION
+Source: Wikipedia (English)
+Article Title: Moon landing conspiracy theories - Wikipedia
+Tested Claim: Apollo Moon landings were staged hoaxes filmed on secret Hollywood movie sets.
+Expected Verdict: FAKE
+TruthLens Verdict: UNCERTAIN (55% Conf, 1 Evidence Match)
+============================================================
+
+EXACT URL TO ANALYZE (Copy and paste into TruthLens URL Mode):
+https://en.wikipedia.org/wiki/Moon_landing_conspiracy_theories

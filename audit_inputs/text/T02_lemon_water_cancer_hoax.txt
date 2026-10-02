@@ -1,0 +1,11 @@
+============================================================
+TruthLens AI Audit Test Input: T02
+Category: FALSE / REFUTED
+Source: Viral Social Media Health Rumor / Debunked Alternative Medicine
+Tested Claim: Lemon water and baking soda completely cure stage 4 cancer in three days.
+Expected Verdict: FAKE
+TruthLens Verdict: UNCERTAIN (56% Conf, 0 Evidence Matches - Safe conservative fallback)
+============================================================
+
+EXACT INPUT TEXT (Copy and paste into TruthLens):
+Drinking warm lemon water and concentrated baking soda completely cures stage 4 cancer in three days.

@@ -1,0 +1,11 @@
+============================================================
+TruthLens AI Audit Test Input: T03
+Category: MISLEADING / EXAGGERATED
+Source: Social Media Regulatory Rumor / Exaggerated Health Claim
+Tested Claim: WHO declared coffee responsible for heart attacks and advised an immediate global ban.
+Expected Verdict: UNCERTAIN
+TruthLens Verdict: UNCERTAIN (56% Conf, 0 Evidence Matches)
+============================================================
+
+EXACT INPUT TEXT (Copy and paste into TruthLens):
+The World Health Organization declared that coffee is directly responsible for heart attacks and advised an immediate global ban on morning caffeine consumption.
