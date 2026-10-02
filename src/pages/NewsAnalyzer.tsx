@@ -780,11 +780,17 @@ export default function NewsAnalyzer({ navigate }: Props) {
           <h1 className="text-3xl font-black text-foreground font-display tracking-tight mb-1">Article Verification Analysis</h1>
           <p className="text-xs text-muted-foreground font-mono">Timestamp: {new Date().toLocaleString()} · 60% Decision Threshold Rule</p>
         </div>
-        <div className="flex gap-2 flex-wrap">
-          <button onClick={() => { setState('input'); setText(''); setUrl(''); setFile(null) }} className="flex items-center gap-2 border border-border/80 bg-card/60 backdrop-blur-md px-4 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider hover:bg-secondary transition-all">
-            <RefreshIcon size={14} /> New Analysis
+        <div className="flex gap-2 flex-wrap items-center">
+          <button onClick={() => { setState('input'); setText(''); setUrl(''); setFile(null) }} className="flex items-center gap-2 border border-border/80 bg-card/60 backdrop-blur-md px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider hover:bg-secondary transition-all">
+            <RefreshIcon size={14} /> New Scan
           </button>
-          <button onClick={handleSaveToggle} className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-md ${saved ? 'bg-real text-white' : 'bg-primary text-white hover:bg-primary-hover shadow-primary/20'}`}>
+          <button onClick={handleDownloadReport} disabled={isDownloading} title="Download PDF Dossier" className="flex items-center gap-1.5 border border-border/80 bg-card/60 backdrop-blur-md px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider hover:bg-secondary transition-all disabled:opacity-60">
+            {isDownloading ? <div className="w-3.5 h-3.5 border-2 border-foreground border-t-transparent animate-spin rounded-full" /> : <DownloadIcon size={14} />} PDF
+          </button>
+          <button onClick={handleShareResult} disabled={isSharing} title="Share Result Link" className="flex items-center gap-1.5 border border-border/80 bg-card/60 backdrop-blur-md px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider hover:bg-secondary transition-all disabled:opacity-60">
+            {isSharing ? <div className="w-3.5 h-3.5 border-2 border-foreground border-t-transparent animate-spin rounded-full" /> : shareCopied ? <CheckIcon size={14} className="text-real" /> : <ShareIcon size={14} />} Share
+          </button>
+          <button onClick={handleSaveToggle} className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-md ${saved ? 'bg-real text-white' : 'bg-primary text-white hover:bg-primary-hover shadow-primary/20'}`}>
             {saved ? <><CheckIcon size={14} /> Saved</> : <><BookmarkIcon size={14} /> Save Report</>}
           </button>
         </div>
@@ -1088,66 +1094,68 @@ export default function NewsAnalyzer({ navigate }: Props) {
         </div>
       )}
 
-      {/* Bottom actions */}
-      <div className="flex gap-3 flex-wrap items-center pt-2">
-        {analysisResult?.metadata?.real_article_id && (
+      {/* Bottom actions — generous bottom padding so floating nav tabs sit cleanly below */}
+      <div className="pt-6 pb-32 sm:pb-36 border-t border-border/70 mt-8 mb-6">
+        <div className="flex gap-3 flex-wrap items-center">
+          {analysisResult?.metadata?.real_article_id && (
+            <button
+              onClick={() => {
+                const realId = analysisResult.metadata?.real_article_id
+                window.location.hash = `#/real-articles/${realId}`
+                window.history.pushState({}, '', `/real-articles/${realId}`)
+                window.dispatchEvent(new PopStateEvent('popstate'))
+              }}
+              className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider hover:bg-primary-hover transition-all shadow-md shadow-primary/20 shrink-0"
+            >
+              <NewspaperIcon size={16} /> Corroborated Article
+            </button>
+          )}
+
           <button
-            onClick={() => {
-              const realId = analysisResult.metadata?.real_article_id
-              window.location.hash = `#/real-articles/${realId}`
-              window.history.pushState({}, '', `/real-articles/${realId}`)
-              window.dispatchEvent(new PopStateEvent('popstate'))
-            }}
-            className="flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider hover:bg-primary-hover transition-all shadow-md shadow-primary/20"
+            onClick={handleDownloadReport}
+            disabled={isDownloading}
+            className="flex items-center gap-2 border border-border bg-card/80 px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-foreground hover:bg-secondary transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-xs shrink-0"
           >
-            <NewspaperIcon size={16} /> Corroborated Article
+            {isDownloading ? (
+              <>
+                <div className="w-3.5 h-3.5 border-2 border-foreground border-t-transparent animate-spin rounded-full" />
+                Generating PDF...
+              </>
+            ) : (
+              <>
+                <DownloadIcon size={15} /> Download PDF Dossier
+              </>
+            )}
           </button>
-        )}
 
-        <button
-          onClick={handleDownloadReport}
-          disabled={isDownloading}
-          className="flex items-center gap-2 border border-border bg-card/60 px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-foreground hover:bg-secondary transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          {isDownloading ? (
-            <>
-              <div className="w-3.5 h-3.5 border-2 border-foreground border-t-transparent animate-spin rounded-full" />
-              Generating PDF...
-            </>
-          ) : (
-            <>
-              <DownloadIcon size={15} /> Download PDF Dossier
-            </>
-          )}
-        </button>
+          <button
+            onClick={handleShareResult}
+            disabled={isSharing}
+            className="flex items-center gap-2 border border-border bg-card/80 px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-foreground hover:bg-secondary transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-xs shrink-0"
+          >
+            {isSharing ? (
+              <>
+                <div className="w-3.5 h-3.5 border-2 border-foreground border-t-transparent animate-spin rounded-full" />
+                Generating Link...
+              </>
+            ) : shareCopied ? (
+              <>
+                <CheckIcon size={15} className="text-real" /> Link Copied!
+              </>
+            ) : (
+              <>
+                <ShareIcon size={15} /> Share Link
+              </>
+            )}
+          </button>
 
-        <button
-          onClick={handleShareResult}
-          disabled={isSharing}
-          className="flex items-center gap-2 border border-border bg-card/60 px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-foreground hover:bg-secondary transition-all disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          {isSharing ? (
-            <>
-              <div className="w-3.5 h-3.5 border-2 border-foreground border-t-transparent animate-spin rounded-full" />
-              Generating Link...
-            </>
-          ) : shareCopied ? (
-            <>
-              <CheckIcon size={15} className="text-real" /> Link Copied!
-            </>
-          ) : (
-            <>
-              <ShareIcon size={15} /> Share Link
-            </>
-          )}
-        </button>
-
-        <button
-          onClick={() => navigate('history')}
-          className="flex items-center gap-2 ml-auto border border-border bg-card/60 px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-foreground hover:bg-secondary transition-all"
-        >
-          Audit History <ArrowRightIcon size={14} />
-        </button>
+          <button
+            onClick={() => navigate('history')}
+            className="flex items-center gap-2 sm:ml-auto border border-border bg-card/80 px-5 py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-foreground hover:bg-secondary transition-all shadow-xs shrink-0"
+          >
+            Audit History <ArrowRightIcon size={14} />
+          </button>
+        </div>
       </div>
     </div>
   )

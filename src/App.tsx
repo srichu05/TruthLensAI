@@ -60,7 +60,7 @@ const DASH_PAGES: Page[] = [
 ]
 
 function Wrap({ id, children }: { id: string; children: React.ReactNode }) {
-  return <div key={id} className="page-fade h-full">{children}</div>
+  return <div key={id} className="page-fade min-h-full pb-8">{children}</div>
 }
 
 function getSharedIdFromUrl(): string | null {

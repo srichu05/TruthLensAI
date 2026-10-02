@@ -134,8 +134,8 @@ export default function DashboardLayout({ page, user, navigate, onLogout, childr
         </div>
       </header>
 
-      {/* Main Full-Width Content Area */}
-      <main className="flex-1 overflow-y-auto bg-background p-0 pb-28 md:pb-24">
+      {/* Main Full-Width Content Area with generous bottom clearance for floating navigation tabs */}
+      <main className="flex-1 overflow-y-auto bg-background p-0 pb-32 sm:pb-36 scroll-smooth">
         {children}
       </main>
 
