@@ -769,7 +769,7 @@ export default function NewsAnalyzer({ navigate }: Props) {
   const displayVerdictText = verdictCategory || config.verdictText
 
   return (
-    <div className="p-6 md:p-8 max-w-5xl mx-auto page-fade" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div className="p-6 md:p-8 pb-0 md:pb-0 max-w-5xl mx-auto page-fade" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-8 flex-wrap">
         <div>
@@ -1094,8 +1094,8 @@ export default function NewsAnalyzer({ navigate }: Props) {
         </div>
       )}
 
-      {/* Bottom actions — generous bottom padding so floating nav tabs sit cleanly below */}
-      <div className="pt-6 pb-32 sm:pb-36 border-t border-border/70 mt-8 mb-6">
+      {/* Bottom actions — calibrated so the scroll terminates exactly above the floating nav bar */}
+      <div className="pt-6 border-t border-border/70 mt-8 mb-0 pb-0">
         <div className="flex gap-3 flex-wrap items-center">
           {analysisResult?.metadata?.real_article_id && (
             <button
