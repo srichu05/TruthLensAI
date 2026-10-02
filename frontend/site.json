@@ -1,0 +1,11 @@
+{
+  "title": "TruthLens AI — Credibility & Fact Check",
+  "description": "AI-powered fake news detector and credibility analysis platform verifying misinformation and factual assertions.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
