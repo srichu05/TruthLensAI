@@ -8,7 +8,7 @@ from app.db.session import get_db
 from app.models.analysis import Analysis
 from app.models.user import User
 from app.schemas.analysis import AnalyzeRequest, AnalysisResponse
-from app.services.nlp_analyzer import analyze_text_content
+from app.services.nlp_analyzer import analyze_text_content, analyze_text_content_async
 from app.services.web_scraper import extract_article_from_url
 from app.services.real_articles import maybe_create_real_article
 from app.api.deps import get_current_user
@@ -43,7 +43,7 @@ async def analyze_news(
         content_to_analyze = payload.content
 
     # Run AI/NLP Analysis
-    analysis_result = analyze_text_content(content_to_analyze, title=title)
+    analysis_result = await analyze_text_content_async(content_to_analyze, title=title)
 
     # Derive a display title if empty
     if not title:
@@ -140,7 +140,7 @@ async def analyze_file_upload(
         raise HTTPException(status_code=400, detail="The uploaded file contains insufficient text.")
 
     title = file.filename or "Uploaded Document"
-    analysis_result = analyze_text_content(text_content, title=title)
+    analysis_result = await analyze_text_content_async(text_content, title=title)
 
     record = Analysis(
         user_id=current_user.id if current_user else None,

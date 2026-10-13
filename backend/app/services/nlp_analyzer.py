@@ -73,15 +73,61 @@ def extract_raw_claims(text: str, title: str = "") -> List[str]:
 
     return combined
 
+async def analyze_text_content_async(text: str, title: str = "") -> Dict[str, Any]:
+    """
+    Primary asynchronous live evidence-grounded verification dispatcher.
+    Uses multi-provider search (Tavily), fact-check registries, and Gemini evaluation.
+    """
+    from app.core.config import settings
+    from app.services.orchestrator import orchestrator
+
+    if getattr(settings, "FACTCHECK_PIPELINE_VERSION", "live_v1") == "legacy_heuristic":
+        return legacy_analyze_text_content(text, title=title)
+
+    try:
+        return await orchestrator.verify_content(text, title=title)
+    except Exception as e:
+        import logging
+        logging.getLogger("truthlens.nlp").warning(f"Error in live pipeline execution: {e}")
+        if getattr(settings, "ENABLE_LEGACY_FALLBACK", False):
+            return legacy_analyze_text_content(text, title=title)
+        raise
+
 def analyze_text_content(text: str, title: str = "") -> Dict[str, Any]:
     """
-    Evidence-first NLP verification and misinformation detection engine.
-    Pipeline:
-      1. Extract discrete factual claims.
-      2. Verify each claim against Google Fact Check API, empirical registries, and accredited databases.
-      3. Aggregate claim results (Supported, Contradicted, Needs Verification).
-      4. Determine evidence-driven verdict (REAL, FAKE, MIXED/MISLEADING, UNCERTAIN).
-      5. Calibrate confidence score based on claim-evidence alignment.
+    Synchronous wrapper for live verification pipeline, maintaining backward compatibility.
+    Dispatches to FactCheckOrchestrator or legacy fallback when explicitly configured.
+    """
+    from app.core.config import settings
+    if getattr(settings, "FACTCHECK_PIPELINE_VERSION", "live_v1") == "legacy_heuristic":
+        return legacy_analyze_text_content(text, title=title)
+
+    import asyncio
+    import concurrent.futures
+    from app.services.orchestrator import orchestrator
+
+    try:
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = None
+
+        if loop and loop.is_running():
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                return pool.submit(lambda: asyncio.run(orchestrator.verify_content(text, title=title))).result()
+        else:
+            return asyncio.run(orchestrator.verify_content(text, title=title))
+    except Exception as e:
+        import logging
+        logging.getLogger("truthlens.nlp").warning(f"Error in live pipeline execution: {e}")
+        if getattr(settings, "ENABLE_LEGACY_FALLBACK", False):
+            return legacy_analyze_text_content(text, title=title)
+        raise
+
+def legacy_analyze_text_content(text: str, title: str = "") -> Dict[str, Any]:
+    """
+    LEGACY FALLBACK: Static heuristic/registry based claim verification engine.
+    Used ONLY when live providers fail and ENABLE_LEGACY_FALLBACK=True.
     """
     full_text = f"{title}\n{text}".lower()
 

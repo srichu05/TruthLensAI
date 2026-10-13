@@ -47,15 +47,28 @@ class Settings(BaseSettings):
     # OpenAPI documentation toggle (disabled by default in production)
     ENABLE_DOCS: bool = False
 
-    # Optional LLM / FactCheck API keys
+    # Live Fact-Checking & Search Provider Configuration
+    TAVILY_API_KEY: Optional[str] = None
+    GEMINI_API_KEY: Optional[str] = None
+    GEMINI_MODEL: str = "gemini-2.0-flash"
+    GOOGLE_FACTCHECK_API_KEY: Optional[str] = None
     OPENAI_API_KEY: Optional[str] = None
     ANTHROPIC_API_KEY: Optional[str] = None
-    GEMINI_API_KEY: Optional[str] = None
-    GOOGLE_FACTCHECK_API_KEY: Optional[str] = None
 
-    # Fact-checking Cache & Timeout parameters
-    FACTCHECK_CACHE_TTL_SECONDS: int = 86400  # 24 hours
-    FACTCHECK_API_TIMEOUT_SECONDS: float = 4.0  # 4 seconds max to keep API responsive
+    # Pipeline Orchestration & Fallback Controls
+    FACTCHECK_PIPELINE_VERSION: str = "live_v1"  # "live_v1" | "legacy_heuristic"
+    ENABLE_LEGACY_FALLBACK: bool = False  # Explicit flag controlling hardcoded/heuristic fallback
+    GEMINI_SEARCH_GROUNDING: bool = False  # Explicit toggle for Gemini Search Grounding
+
+    # Resource Limits & Timeouts
+    FACTCHECK_TIMEOUT_SECONDS: float = 12.0  # Max seconds for complete multi-provider analysis
+    FACTCHECK_API_TIMEOUT_SECONDS: float = 4.0  # Per-provider request timeout
+    FACTCHECK_MAX_CLAIMS: int = 6  # Max atomic claims evaluated per submission
+    FACTCHECK_MAX_SEARCH_RESULTS: int = 5  # Max search results per claim
+
+    # Cache TTL parameters
+    FACTCHECK_CACHE_TTL_SECONDS: int = 86400  # 24 hours for stable claims
+    FACTCHECK_CACHE_BREAKING_TTL_SECONDS: int = 3600  # 1 hour for breaking/evolving claims
 
     def get_cors_origins(self) -> list[str]:
         origins = set()

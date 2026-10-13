@@ -10,6 +10,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 
 from app.core.config import settings
 from app.core.limiter import limiter
@@ -50,6 +51,7 @@ app = FastAPI(
 
 # Register slowapi limiter on application state
 app.state.limiter = limiter
+app.add_middleware(SlowAPIMiddleware)
 
 @app.exception_handler(RateLimitExceeded)
 async def rate_limit_exceeded_handler(request: Request, exc: RateLimitExceeded):

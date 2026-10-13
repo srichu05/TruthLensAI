@@ -773,9 +773,22 @@ export default function NewsAnalyzer({ navigate }: Props) {
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-8 flex-wrap">
         <div>
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-primary">Verification Analysis Finalized</span>
+            {analysisResult?.metadata?.legacy_fallback_used ? (
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                ⚠️ Legacy Fallback Engine
+              </span>
+            ) : analysisResult?.metadata?.pipeline_status === 'degraded' ? (
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                ⚡ Live Retrieval Incomplete
+              </span>
+            ) : (
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                ✓ Live Evidence Grounded
+              </span>
+            )}
           </div>
           <h1 className="text-3xl font-black text-foreground font-display tracking-tight mb-1">Article Verification Analysis</h1>
           <p className="text-xs text-muted-foreground font-mono">Timestamp: {new Date().toLocaleString()} · 60% Decision Threshold Rule</p>
@@ -915,9 +928,21 @@ export default function NewsAnalyzer({ navigate }: Props) {
                     {/* Supporting Evidence Link */}
                     {item.evidence && item.evidence.length > 0 && (
                       <div className="pt-2 border-t border-border/50 flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
-                        <span className="text-muted-foreground">
-                          Evidence: <strong className="text-foreground">{item.evidence[0].source_name}</strong>
-                        </span>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-muted-foreground">
+                            Evidence: <strong className="text-foreground">{item.evidence[0].source_name}</strong>
+                          </span>
+                          {item.evidence[0].date && (
+                            <span className="text-[10px] text-muted-foreground bg-secondary/60 px-1.5 py-0.5 rounded">
+                              {item.evidence[0].date.slice(0, 10)}
+                            </span>
+                          )}
+                          {item.evidence[0].rating && (
+                            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-real/15 text-real border border-real/30">
+                              Rating: {item.evidence[0].rating}
+                            </span>
+                          )}
+                        </div>
                         {item.evidence[0].url ? (
                           <a
                             href={item.evidence[0].url}
@@ -995,9 +1020,21 @@ export default function NewsAnalyzer({ navigate }: Props) {
                     {/* Contradictory Evidence Link */}
                     {item.evidence && item.evidence.length > 0 && (
                       <div className="pt-2 border-t border-border/50 flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
-                        <span className="text-muted-foreground">
-                          Contradictory Evidence: <strong className="text-foreground">{item.evidence[0].source_name}</strong>
-                        </span>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-muted-foreground">
+                            Contradictory Evidence: <strong className="text-foreground">{item.evidence[0].source_name}</strong>
+                          </span>
+                          {item.evidence[0].date && (
+                            <span className="text-[10px] text-muted-foreground bg-secondary/60 px-1.5 py-0.5 rounded">
+                              {item.evidence[0].date.slice(0, 10)}
+                            </span>
+                          )}
+                          {item.evidence[0].rating && (
+                            <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-fake/15 text-fake border border-fake/30">
+                              Rating: {item.evidence[0].rating}
+                            </span>
+                          )}
+                        </div>
                         {item.evidence[0].url ? (
                           <a
                             href={item.evidence[0].url}
