@@ -1,0 +1,297 @@
+{
+  "summary": {
+    "total_claims": 20,
+    "exact_agreement_rate": 0.9,
+    "abstention_rate": 0.2,
+    "citation_validity_percent": 100.0,
+    "average_latency_ms": 1165.8,
+    "median_latency_ms": 1192,
+    "provider_failure_rate": 0.0,
+    "legacy_fallback_used_count": 0
+  },
+  "confusion_matrix": {
+    "real": {
+      "real": 6,
+      "fake": 0,
+      "uncertain": 0
+    },
+    "fake": {
+      "real": 0,
+      "fake": 8,
+      "uncertain": 0
+    },
+    "uncertain": {
+      "real": 2,
+      "fake": 0,
+      "uncertain": 4
+    }
+  },
+  "per_class_metrics": {
+    "real": {
+      "tp": 6,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.857
+    },
+    "fake": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "uncertain": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.667,
+      "f1": 0.8
+    }
+  },
+  "claim_results": [
+    {
+      "id": "BM01",
+      "claim": "The Earth takes approximately 365.25 days to orbit around the Sun.",
+      "expected": "real",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": true,
+      "latency_ms": 1371,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM02",
+      "claim": "Water consists of two hydrogen atoms covalently bonded to one oxygen atom.",
+      "expected": "real",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": true,
+      "latency_ms": 1186,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM03",
+      "claim": "NASA successfully landed the Perseverance rover on Mars in February 2021.",
+      "expected": "real",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": true,
+      "latency_ms": 968,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM04",
+      "claim": "The mammalian heart typically contains four functional chambers.",
+      "expected": "real",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": true,
+      "latency_ms": 1013,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM05",
+      "claim": "Alexander Fleming discovered penicillin in 1928 at St Mary Hospital.",
+      "expected": "real",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": true,
+      "latency_ms": 957,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM06",
+      "claim": "Drinking industrial bleach or chlorine dioxide cures COVID-19 and viral infections.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 962,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM07",
+      "claim": "5G wireless telecommunication networks transmit biological viruses.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 1049,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM08",
+      "claim": "The Earth is completely flat and enclosed by an impenetrable outer wall of ice.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 952,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM09",
+      "claim": "Albert Einstein failed elementary school mathematics courses as a child.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 1078,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM10",
+      "claim": "Domestic microwave ovens make heated food radioactive through ionizing radiation.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 1208,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM11",
+      "claim": "Carrots were originally purple and orange varieties were popularized in the Netherlands.",
+      "expected": "real",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": true,
+      "latency_ms": 1493,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM12",
+      "claim": "Eating bananas with milk generates instant toxic chemical reactions in the stomach.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 1334,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM13",
+      "claim": "Moderate coffee drinking lowers cardiovascular risk while excessive caffeine impairs sleep quality.",
+      "expected": "uncertain",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": false,
+      "latency_ms": 1249,
+      "sources_retrieved": 2,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM14",
+      "claim": "A secret glass pyramid was discovered under Antarctic ice sheets yesterday by tourists.",
+      "expected": "uncertain",
+      "actual": "uncertain",
+      "confidence": 45,
+      "verdict_category": "UNVERIFIED (INSUFFICIENT EVIDENCE)",
+      "is_correct": true,
+      "latency_ms": 1360,
+      "sources_retrieved": 0,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM15",
+      "claim": "Extraterrestrial alien spacecraft landed covertly in Nevada last Tuesday.",
+      "expected": "uncertain",
+      "actual": "uncertain",
+      "confidence": 45,
+      "verdict_category": "UNVERIFIED (INSUFFICIENT EVIDENCE)",
+      "is_correct": true,
+      "latency_ms": 1247,
+      "sources_retrieved": 0,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM16",
+      "claim": "An anonymous resident discovered the lost city of Atlantis inside a residential swimming pool.",
+      "expected": "uncertain",
+      "actual": "uncertain",
+      "confidence": 45,
+      "verdict_category": "UNVERIFIED (INSUFFICIENT EVIDENCE)",
+      "is_correct": true,
+      "latency_ms": 1045,
+      "sources_retrieved": 0,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM17",
+      "claim": "The Great Wall of China is visible from the Moon with the unaided human eye.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 1192,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM18",
+      "claim": "Electric vehicles have zero tailpipe emissions but battery manufacturing creates upstream carbon footprint.",
+      "expected": "uncertain",
+      "actual": "real",
+      "confidence": 95,
+      "verdict_category": "LIKELY REAL",
+      "is_correct": false,
+      "latency_ms": 1195,
+      "sources_retrieved": 2,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM19",
+      "claim": "Swallowed chewing gum stays inside the human digestive tract for exactly seven years.",
+      "expected": "fake",
+      "actual": "fake",
+      "confidence": 96,
+      "verdict_category": "LIKELY FAKE",
+      "is_correct": true,
+      "latency_ms": 1397,
+      "sources_retrieved": 1,
+      "legacy_fallback_used": false
+    },
+    {
+      "id": "BM20",
+      "claim": "A self-proclaimed time traveler from year 2085 arrived in London yesterday predicting market crash.",
+      "expected": "uncertain",
+      "actual": "uncertain",
+      "confidence": 45,
+      "verdict_category": "UNVERIFIED (INSUFFICIENT EVIDENCE)",
+      "is_correct": true,
+      "latency_ms": 1059,
+      "sources_retrieved": 0,
+      "legacy_fallback_used": false
+    }
+  ]
+}
