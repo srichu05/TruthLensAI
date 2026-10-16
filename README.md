@@ -1,6 +1,6 @@
 # TruthLens AI — Credibility & Fact Check Engine
 
-TruthLens AI is an evidence-first misinformation detection and credibility analysis platform. It analyzes news articles across multiple modalities (raw text, web URLs, document uploads), extracts individual factual claims, cross-references them against live global fact-checking registries and domain knowledge, and produces transparent, evidence-weighted credibility verdicts.
+TruthLens-AI is an evidence-first misinformation detection and credibility analysis platform. It analyzes news articles across multiple modalities (raw text, web URLs, document uploads), extracts individual factual claims, cross-references them against live global fact-checking registries and domain knowledge, and produces transparent, evidence-weighted credibility verdicts.
 
 ---
 
